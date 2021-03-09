@@ -4,7 +4,7 @@
 	var loader = '<div style="" id="ctn-preloader" class="ctn-preloader"><div class="loader_wrapper"><div class="camera"><div class="lens"></div><div class="flashLight"></div><div class="picture"><div class="imgBox"><img src="./best_logo_.jpg" /></div></div><div class="mouse"></div></div><div class="loader-dots"><span style="--i:1;">L</span><span style="--i:2;">o</span><span style="--i:3;">a</span><span style="--i:4;">d</span><span style="--i:5;">i</span><span style="--i:6;">n</span><span style="--i:7;">g</span><span style="--i:8;">.</span><span style="--i:9;">.</span><span style="--i:10;">.</span></div></div></div>'
 	$('body').append(loader);
 	$(window).on('load', function () {
-		setTimeout(removeLoader, 6000); //wait for page load PLUS two seconds.
+		setTimeout(removeLoader, 500); //wait for page load PLUS two seconds.
 
 		AOS.refresh();
 	});
