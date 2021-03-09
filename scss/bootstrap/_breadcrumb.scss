@@ -1,0 +1,44 @@
+.hero-abt {
+  display: flex;
+  flex-wrap: wrap;
+  padding: $hero-abt-padding-y $hero-abt-padding-x;
+  margin-bottom: $hero-abt-margin-bottom;
+  @include font-size($hero-abt-font-size);
+  list-style: none;
+  background-color: $hero-abt-bg;
+  @include border-radius($hero-abt-border-radius);
+}
+
+.hero-abt-item {
+  display: flex;
+
+  // The separator between hero-abts (by default, a forward-slash: "/")
+  + .hero-abt-item {
+    padding-left: $hero-abt-item-padding;
+
+    &::before {
+      display: inline-block; // Suppress underlining of the separator in modern browsers
+      padding-right: $hero-abt-item-padding;
+      color: $hero-abt-divider-color;
+      content: escape-svg($hero-abt-divider);
+    }
+  }
+
+  // IE9-11 hack to properly handle hyperlink underlines for hero-abts built
+  // without `<ul>`s. The `::before` pseudo-element generates an element
+  // *within* the .hero-abt-item and thereby inherits the `text-decoration`.
+  //
+  // To trick IE into suppressing the underline, we give the pseudo-element an
+  // underline and then immediately remove it.
+  + .hero-abt-item:hover::before {
+    text-decoration: underline;
+  }
+  // stylelint-disable-next-line no-duplicate-selectors
+  + .hero-abt-item:hover::before {
+    text-decoration: none;
+  }
+
+  &.active {
+    color: $hero-abt-active-color;
+  }
+}
