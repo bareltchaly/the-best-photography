@@ -4,7 +4,7 @@
 	var loader = '<div style="" id="ctn-preloader" class="ctn-preloader"><div class="loader_wrapper"><div class="camera"><div class="lens"></div><div class="flashLight"></div><div class="picture"><div class="imgBox"><img src="./best_logo_.jpg" /></div></div><div class="mouse"></div></div><div class="loader-dots"><span style="--i:1;">L</span><span style="--i:2;">o</span><span style="--i:3;">a</span><span style="--i:4;">d</span><span style="--i:5;">i</span><span style="--i:6;">n</span><span style="--i:7;">g</span><span style="--i:8;">.</span><span style="--i:9;">.</span><span style="--i:10;">.</span></div></div></div>'
 	$('body').append(loader);
 	$(window).on('load', function () {
-		setTimeout(removeLoader, 500); //wait for page load PLUS two seconds.
+		setTimeout(removeLoader, 6000); //wait for page load PLUS two seconds.
 
 		AOS.refresh();
 	});
@@ -247,40 +247,7 @@
 
 	});
 
-	//responcive grid
-	var gallery = document.querySelector('#gallery');
-	var getVal = function (elem, style) { return parseInt(window.getComputedStyle(elem).getPropertyValue(style)); };
-	var getHeight = function (item) { return item.querySelector('.content').getBoundingClientRect().height; };
-	var resizeAll = function () {
-		var altura = getVal(gallery, 'grid-auto-rows');
-		var gap = getVal(gallery, 'grid-row-gap');
-		gallery.querySelectorAll('.gallery-item').forEach(function (item) {
-			var el = item;
-			el.style.gridRowEnd = "span " + Math.ceil((getHeight(item) + gap) / (altura + gap));
-		});
-	};
-	gallery.querySelectorAll('img').forEach(function (item) {
-		item.classList.add('byebye');
-		if (item.complete) {
-			console.log(item.src);
-		}
-		else {
-			item.addEventListener('load', function () {
-				var altura = getVal(gallery, 'grid-auto-rows');
-				var gap = getVal(gallery, 'grid-row-gap');
-				var gitem = item.parentElement.parentElement;
-				gitem.style.gridRowEnd = "span " + Math.ceil((getHeight(gitem) + gap) / (altura + gap));
-				item.classList.remove('byebye');
-			});
-		}
-	});
-	window.addEventListener('resize', resizeAll);
-	gallery.querySelectorAll('.gallery-item').forEach(function (item) {
-		item.addEventListener('click', function () {
-			window.location.href = "./gallery.html";
-		});
-	});
-
+	
 
 
 
